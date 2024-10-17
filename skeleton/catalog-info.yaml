@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: doc-site 
-  description: Documentation for ${{values.title}}
+  name: ${{values.name}}
+  description: Documentation for ${{values.name}}
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
