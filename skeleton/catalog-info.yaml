@@ -1,4 +1,11 @@
-catalog:
-  locations:
-    - type: file 
-      target: ~/projects/golden-path-template/template.yaml 
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.title }}-docs
+  description: Documentation for ${{values.title}}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: documentation
+  lifecycle: experimental
+  owner: my-team
