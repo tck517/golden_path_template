@@ -1,0 +1,29 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: golden-path-template
+  title: Golden Path Template
+  description: Create a new Golden Path documentation site.
+spec:
+  owner: your-team-name
+  type: documentation
+  parameters:
+    - title:
+        title: Site Title
+        type: string
+        required: true
+        description: The title of the Golden Path site.
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          title: ${{ parameters.title }}
+    - id: publish
+      name: Publish to GitHub
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        repoUrl: ${{ steps.fetch-base.output.repoUrl }}
